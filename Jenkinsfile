@@ -12,7 +12,7 @@ pipeline {
         echo "Hello ${params.PERSON}"
         echo "Buildnumber:$BUILD_NUMBER"
         echo "Build id:$BUILD_ID"
-echo "Build display name:$BUILD_DISPLAY_NAME"
+	echo "Build display name:$BUILD_DISPLAY_NAME"
 echo "Job Name:$JOB_NAME"
 echo "Job Base Name:$JOB_BASE_NAME"
 echo "Build Tag:$BUILD_TAG"
