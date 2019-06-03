@@ -9,7 +9,7 @@ class AboutController {
 
 	@ModelAttribute("module")
 	String module() {
-		return "about the site";
+		return "about";
 	}
 
 	@GetMapping("/about")
