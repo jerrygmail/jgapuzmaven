@@ -5,6 +5,7 @@ pipeline {
     }
   parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+	string(name: 'CATALINA_HOME' , defaultValue: 'C:\apache-tomcat')
           }
   stages {
     stage('Compile') {
