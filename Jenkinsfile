@@ -48,7 +48,7 @@ echo "Job URL:$JOB_URL"
 	bat "C:\\apache-tomcat\\bin\\shutdown.bat"
 	sleep(time:10,unit:"SECONDS")
 	bat "start /B C:\\apache-tomcat\\bin\\startup.bat"
-	sleep(time:10,unit:"SECONDS")
+	sleep(time:20,unit:"SECONDS")
         echo 'Copying to artifactory'
         bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
       }
