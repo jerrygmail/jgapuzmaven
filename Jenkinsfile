@@ -41,7 +41,7 @@ echo "Job URL:$JOB_URL"
     stage('Deploy') {
       steps {
         //build(job: '../GOT-Deploy-to-Dev', parameters: [string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")])
-	bat 'target/sandbox-1.0-SNAPSHOT.war C:\apache-tomcat\webapps'
+	bat 'copy target/sandbox-1.0-SNAPSHOT.war C:\apache-tomcat\webapps'
         echo 'Copying to artifactory'
         bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
       }
