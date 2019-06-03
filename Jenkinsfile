@@ -43,6 +43,8 @@ echo "Job URL:$JOB_URL"
         //build(job: '../GOT-Deploy-to-Dev', parameters: [string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")])
 	bat "del  C:\\apache-tomcat\\webapps\\sandbox-1.0-SNAPSHOT.war"
 	bat "copy /Y target\\sandbox-1.0-SNAPSHOT.war C:\\apache-tomcat\\webapps"
+	bat "C:\\apache-tomcat\\bin\\shutdown.bat"
+	bat "C:\\apache-tomcat\\bin\\startup.bat"
         echo 'Copying to artifactory'
         bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
       }
