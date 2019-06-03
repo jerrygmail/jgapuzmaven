@@ -24,17 +24,17 @@ echo "Jenkins Home:$JENKINS_HOME"
 echo "Jenkins URL:$JENKINS_URL"
 echo "Build URL:$BUILD_URL"
 echo "Job URL:$JOB_URL"
-        sh 'mvn compile -Dmaven.test.skip=true'
+        bat 'mvn compile -Dmaven.test.skip=true'
       }
     }
     stage('Test') {
       steps {
-        sh 'mvn test'
+        bat 'mvn test'
       }
     }
     stage('Package') {
       steps {
-        sh 'mvn package -Dmaven.test.skip=true'
+        bat 'mvn package -Dmaven.test.skip=true'
         archiveArtifacts(artifacts: 'target/sandbox-1.0-SNAPSHOT.war', fingerprint: true)
       }
     }
