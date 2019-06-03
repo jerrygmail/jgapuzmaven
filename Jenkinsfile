@@ -46,7 +46,7 @@ echo "Job URL:$JOB_URL"
 	bat "copy /Y target\\sandbox-1.0-SNAPSHOT.war C:\\apache-tomcat\\webapps"
 	sleep(time:3,unit:"SECONDS")
 	bat "C:\\apache-tomcat\\bin\\shutdown.bat"
-	sleep(time:5,unit:"SECONDS")
+	sleep(time:10,unit:"SECONDS")
 	bat "C:\\apache-tomcat\\bin\\startup.bat"
 	sleep(time:10,unit:"SECONDS")
         echo 'Copying to artifactory'
