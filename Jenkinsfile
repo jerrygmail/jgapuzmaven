@@ -43,7 +43,7 @@ echo "Job URL:$JOB_URL"
       steps {
         //build(job: '../GOT-Deploy-to-Dev', parameters: [string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")])
 	bat "del  C:\\apache-tomcat\\webapps\\sandbox-1.0-SNAPSHOT.war"
-	sleep(time:15,unit:"SECONDS")
+	sleep(time:20,unit:"SECONDS")
 	bat "copy /Y target\\sandbox-1.0-SNAPSHOT.war C:\\apache-tomcat\\webapps"
 	sleep(time:3,unit:"SECONDS")
 	bat "C:\\apache-tomcat\\bin\\shutdown.bat"
