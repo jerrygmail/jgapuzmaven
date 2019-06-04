@@ -54,6 +54,8 @@ echo "Job URL:$JOB_URL"
         bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
       }
     }
+	stage ('Post Deployment Test'){
+	}
   }
 post { 
 	 
