@@ -15,14 +15,12 @@ pipeline {
     // The default value (if not configured) is 300 seconds:
     timeout = 300
 )
+		 string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+	string(name: 'CATALINA_HOME' , defaultValue: 'C:\\apache-tomcat')
 }
   triggers {
         pollSCM '* * * * *'
     }
-  parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-	string(name: 'CATALINA_HOME' , defaultValue: 'C:\\apache-tomcat')
-          }
   stages {
     stage('Compile') {
       steps {
