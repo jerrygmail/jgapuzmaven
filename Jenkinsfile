@@ -63,8 +63,8 @@ echo "Job URL:$JOB_URL"
         """{
           "files": [
             {
-              "pattern": "bazinga/*froggy*.zip",
-              "target": "bazinga-repo/froggy-files/"
+              "pattern": "target/sandbox-1.0-SNAPSHOT.war",
+              "target": "example-repo-local/"
             }
          ]
         }"""
