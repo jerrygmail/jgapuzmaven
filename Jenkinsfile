@@ -1,5 +1,6 @@
 pipeline {
   agent any
+	parameters {
 	rtServer (
     id: "Artifactory-1",
     url: "http://localhost:8081/artifactory",
@@ -14,6 +15,7 @@ pipeline {
     // The default value (if not configured) is 300 seconds:
     timeout = 300
 )
+}
   triggers {
         pollSCM '* * * * *'
     }
