@@ -8,7 +8,7 @@ pipeline {
         pollSCM '* * * * *'
     }
   stages {
-    stage('Compile') {
+    stage('Show Variables') {
       steps {
         echo "Hello ${params.PERSON}"
         echo "Buildnumber:$BUILD_NUMBER"
@@ -25,18 +25,11 @@ echo "Jenkins Home:$JENKINS_HOME"
 echo "Jenkins URL:$JENKINS_URL"
 echo "Build URL:$BUILD_URL"
 echo "Job URL:$JOB_URL"
-        bat 'mvn compile -Dmaven.test.skip=true'
       }
     }
     stage('Test') {
       steps {
         bat 'mvn test'
-      }
-    }
-    stage('Package') {
-      steps {
-        bat 'mvn package -Dmaven.test.skip=true'
-        archiveArtifacts(artifacts: 'target/sandbox-1.0-SNAPSHOT.war', fingerprint: true)
       }
     }
     stage('Deploy') {
