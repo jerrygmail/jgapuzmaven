@@ -1,7 +1,6 @@
 pipeline {
   agent any
-	def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
-	parameters {
+		parameters {
 	 string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 	string(name: 'CATALINA_HOME' , defaultValue: 'C:\\apache-tomcat')
 }
@@ -57,9 +56,13 @@ echo "Job URL:$JOB_URL"
     }
 	stage ('Post Deployment Test'){
 		steps	{
+			
 		//bat "c:\\jdk18\\bin\\javac.exe -cp \"C:\\seleniumjava\\client-combined-3.141.59.jar;C:\\seleniumjava\\client-combined-3.141.59-sources.jar;C:\\testng\\testng-6.0.jar;C:\\testng\\bsh-1.3.0.jar;C:\\testng\\jcommander-1.48.jar;\" jenkins_demo.java"
 		//bat "c:\\jdk18\\bin\\java.exe -cp .\\;C:\\testng\\testng-6.0.jar;C:\\testng\\jcommander-1.48.jar;C:\\testng\\bsh-1.3.0.jar;C:\\seleniumjava\\client-combined-3.141.59.jar;C:\\seleniumjava\\libs\\guava-25.0-jre.jar;C:\\seleniumjava\\libs\\okhttp-3.11.0.jar;C:\\seleniumjava\\libs\\okio-1.14.0.jar;C:\\seleniumjava\\libs\\commons-exec-1.3.jar org.testng.TestNG testng.xml"
-		 rtUpload (
+			script {
+				def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
+			}
+			rtUpload (
     serverId: "Artifactory-1",
     spec:
         """{
