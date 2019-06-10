@@ -54,9 +54,9 @@ echo "Job URL:$JOB_URL"
     }
     stage('Deploy') {
       steps {
-        build(job: '../GOT-Deploy-to-Dev', parameters: [string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")])
+        //build(job: '../GOT-Deploy-to-Dev', parameters: [string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")])
         echo 'Copying to artifactory'
-        bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
+        //bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
 	      rtUpload (
     serverId: "Artifactory-1",
     spec:
@@ -77,11 +77,11 @@ post {
         success { 
             echo 'Success!'
           echo 'test'
-            mail to:"jerry.manaloto@sprint.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
+            //mail to:"jerry.manaloto@sprint.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
         }
         failure { 
             echo 'Build failed!'
-          mail to:"jerry.manaloto@sprint.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
+          //mail to:"jerry.manaloto@sprint.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
         }
     }
 }
