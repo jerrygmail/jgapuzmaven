@@ -57,6 +57,18 @@ echo "Job URL:$JOB_URL"
         build(job: '../GOT-Deploy-to-Dev', parameters: [string(name: 'BRANCH_NAME', value: "${env.BRANCH_NAME}")])
         echo 'Copying to artifactory'
         bat(script: "copyartifact.bat $JOB_BASE_NAME $BUILD_NUMBER", returnStatus: true, returnStdout: true)
+	      rtUpload (
+    serverId: "Artifactory-1",
+    spec:
+        """{
+          "files": [
+            {
+              "pattern": "bazinga/*froggy*.zip",
+              "target": "bazinga-repo/froggy-files/"
+            }
+         ]
+        }"""
+)
       }
     }
   }
