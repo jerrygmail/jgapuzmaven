@@ -79,7 +79,7 @@ def downloadSpec = """{
  "files": [
   {
       "pattern": "example-repo-local/sandbox-1.0-SNAPSHOT.war",
-      "target": "C://test"
+      "target": "C://test//sandbox-1.0-SNAPSHOT.war"
     }
  ]
 }"""
