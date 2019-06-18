@@ -67,6 +67,34 @@ server.upload(uploadSpec)
 
 		}
 	}
+	  stage ('Deploy from artifactory'){
+
+        steps    {        
+
+            script {
+
+                def server = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'password'
+
+def downloadSpec = """{
+ "files": [
+  {
+      "pattern": "example-repo-local/sandbox-1.0-SNAPSHOT.war",
+      "target": "C://test"
+    }
+ ]
+}"""
+
+server.download(downloadSpec)
+
+                }
+
+
+ 
+
+
+        }
+
+}
   }
 post { 
 	 
